@@ -1,0 +1,45 @@
+.bl-h { display: grid; justify-items: center; text-align: center; gap: 18px; padding-block: clamp(44px, 7vw, 96px) clamp(28px, 4vw, 48px); }
+.bl-h h1 { font-size: clamp(2.2rem, 5.4vw, 3.8rem); max-width: 18ch; }
+.bl-h p { font-size: clamp(17px, 2vw, 20px); color: var(--body); max-width: 38rem; text-wrap: pretty; }
+.filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 28px; }
+.filtros button { font: 500 14px/1 var(--sans); min-height: 40px; padding: 0 16px; border-radius: 9999px; border: 0; cursor: pointer; background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair2); transition: background .15s; }
+.filtros button:hover { background: var(--hover); }
+.filtros button[aria-pressed="true"] { background: var(--accent); box-shadow: inset 0 0 0 1px #000; }
+.posts { display: grid; gap: 14px; padding-bottom: clamp(48px, 7vw, 88px); }
+.post { display: grid; gap: 10px; align-content: start; padding: clamp(18px, 3vw, 26px); background: var(--card); border-radius: 12px; box-shadow: var(--ring); text-decoration: none; color: inherit; }
+.post[hidden] { display: none; }
+.post h2 { font-size: clamp(1.2rem, 2.2vw, 1.45rem); line-height: 1.25; font-weight: 600; letter-spacing: -.015em; text-wrap: balance; }
+.post p { color: var(--body); font-size: 16px; text-wrap: pretty; max-width: 46rem; }
+.post .meta { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.post.lido { box-shadow: var(--ring); transition: background .15s; }
+.post.lido:hover { background: var(--hover); }
+.post.lido h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); line-height: 1.15; max-width: 24ch; }
+.post .ler { font-weight: 600; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--accent); text-decoration-thickness: 3px; }
+.post.breve h2, .post.breve p { color: var(--body); }
+.post.breve { background: transparent; box-shadow: 0 0 0 1px var(--hair); }
+.grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .grade { grid-template-columns: minmax(0, 1fr); } }
+.vazio { text-align: center; color: var(--muted); padding: 24px 0; }
+.fim { display: grid; justify-items: center; text-align: center; gap: 18px; }
+.fim h2 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.08; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
+.fim p { color: var(--body); font-size: 18px; max-width: 32rem; text-wrap: pretty; }
+.fim .acoes { justify-content: center; margin-top: 6px; }
+.fimb { padding-block: clamp(40px, 7vw, 96px) clamp(56px, 8vw, 104px); }
+/* artigo */
+.art { width: min(680px, 100%); margin: 0 auto; padding-block: clamp(28px, 5vw, 64px) 24px; display: grid; gap: 22px; }
+.art .volta { font-size: 14px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.art .volta:hover { text-decoration: underline; }
+.art h1 { font-size: clamp(2rem, 4.6vw, 3rem); }
+.art .meta { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.art .corpo { display: grid; gap: 22px; }
+.art .corpo > p:first-child { font-size: 19px; line-height: 1.55; color: var(--body); text-wrap: pretty; }
+.art blockquote { margin: 4px 0; padding: 4px 0 4px 20px; box-shadow: inset 4px 0 0 var(--accent); font-size: 19px; line-height: 1.45; font-weight: 500; text-wrap: pretty; }
+.art h2 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); line-height: 1.2; letter-spacing: -.02em; font-weight: 600; margin-top: 14px; text-wrap: balance; }
+.art p { font-size: 18px; line-height: 1.65; color: #2b2b28; text-wrap: pretty; }
+.art .caixa { padding: clamp(18px, 3vw, 26px); background: var(--card); border-radius: 12px; box-shadow: var(--ring); display: grid; gap: 14px; }
+.art .caixa h2 { margin-top: 0; display: block; }
+.art .caixa p { font-size: 16px; }
+.art ul { display: grid; gap: 10px; padding-left: 0; }
+.art ul li { position: relative; padding-left: 22px; font-size: 18px; line-height: 1.6; color: #2b2b28; text-wrap: pretty; }
+.art ul li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: inset 0 0 0 1px #000; }
+.art .autor { font-size: 15px; color: var(--muted); padding-top: 18px; box-shadow: 0 -1px 0 var(--hair); }

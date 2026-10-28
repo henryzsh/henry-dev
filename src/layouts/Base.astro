@@ -1,0 +1,72 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/base.css";
+
+interface Props {
+  titulo: string;
+  descricao: string;
+  atual: "home" | "blog" | "outra";
+  tipo?: "website" | "article";
+}
+const { titulo, descricao, atual, tipo = "website" } = Astro.props;
+const canonico = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{titulo}</title>
+<meta name="description" content={descricao}>
+<link rel="canonical" href={canonico}>
+<meta property="og:type" content={tipo}>
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content={titulo}>
+<meta property="og:description" content={descricao}>
+<meta property="og:url" content={canonico}>
+<meta name="theme-color" content="#f8f5ed">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="marca" viewBox="0 0 128 128"><g transform="rotate(-9 64 66)"><rect x="16" y="36" width="88" height="76" rx="18" fill="var(--logo-side)" stroke="var(--logo-line)" stroke-width="6" stroke-linejoin="round"/><rect x="24" y="16" width="80" height="72" rx="18" fill="var(--logo-face)" stroke="var(--logo-line)" stroke-width="6" stroke-linejoin="round"/><path d="M46 36h9v12.5h18V36h9v32h-9V57.5H55V68h-9z" fill="var(--logo-h)"/></g></symbol><symbol id="marca-sm" viewBox="0 0 128 128"><g transform="translate(-1.7 -2.5) rotate(-9 64 66)"><rect x="16" y="42" width="88" height="76" rx="20" fill="var(--logo-side)" stroke="var(--logo-line)" stroke-width="8" stroke-linejoin="round"/><rect x="24" y="14" width="80" height="74" rx="20" fill="var(--logo-face)" stroke="var(--logo-line)" stroke-width="8" stroke-linejoin="round"/><path d="M40 28h14v16h20V28h14v44H74V56H54v16H40z" fill="var(--logo-h)"/></g></symbol></svg>
+<Header atual={atual} />
+<slot />
+<Footer atual={atual} />
+<script is:inline>
+(function () {
+  var nav = document.querySelector('.nav'), ult = 0, reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  addEventListener('scroll', function () {
+    var y = Math.max(0, scrollY);
+    if (y < 80) nav.classList.remove('oculto');
+    else if (y > ult + 6) nav.classList.add('oculto');
+    else if (y < ult - 6) nav.classList.remove('oculto');
+    ult = y;
+  }, { passive: true });
+  var ls = document.querySelectorAll('.links a');
+  if (ls.length && 'IntersectionObserver' in window) {
+    var mapa = {}; ls.forEach(function (a) { mapa[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { ls.forEach(function (a) { a.removeAttribute('aria-current'); }); var a = mapa[e.target.id]; if (a) a.setAttribute('aria-current', 'true'); } });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    Object.keys(mapa).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+  addEventListener('hashchange', function () { nav.classList.add('oculto'); });
+  document.querySelectorAll('[data-copia]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.getAttribute('data-copia'), antes = b.textContent;
+      function ok() { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = antes; }, 1600); }
+      function sel() {
+        var v = document.querySelector('.fim .v') || b.parentNode.querySelector('.v'); if (!v) return;
+        var r = document.createRange(); r.selectNodeContents(v); var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+        b.textContent = 'Selecionado'; setTimeout(function () { b.textContent = antes; }, 1600);
+      }
+      try { navigator.clipboard.writeText(t).then(ok, sel); } catch (e) { sel(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

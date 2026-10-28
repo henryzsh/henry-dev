@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import "../../styles/blog.css";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dia = post.data.pubDate.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+---
+<Base titulo={`${post.data.title} · Henry Kauã`} descricao={post.data.description} atual="blog" tipo="article">
+<main id="conteudo" class="gut w"><article class="art">
+<a class="volta" href="/blog/">← Todos os textos</a>
+<div class="meta"><span class="chip">{post.data.categoria}</span><span>{dia}</span><span>{post.data.leitura}</span></div>
+<h1>{post.data.title}</h1>
+<div class="corpo"><Content /></div>
+<div class="caixa"><h2>Quer ver como foi feito?</h2><p>O Movimento tem um case completo na página principal, com as alternativas que avaliei, como validei os números e as decisões que tomei.</p><div class="acoes"><a class="btn" href="/#movimento">Ver o case do Movimento</a><a class="btn btn-ghost" href="https://wa.me/5585988350966?text=Ol%C3%A1%2C%20Henry!%20Li%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener">Falar comigo</a></div></div>
+<p class="autor">Escrito por Henry Kauã, desenvolvedor backend em Fortaleza.</p>
+</article></main>
+</Base>

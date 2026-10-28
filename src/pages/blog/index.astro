@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { categorias, emBreve } from "../../data/em-breve";
+import "../../styles/blog.css";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+---
+<Base titulo="Blog · Henry Kauã" descricao="Textos sobre como eu resolvo problemas de backend, automação e integração, sempre a partir de projetos reais." atual="blog">
+<main id="conteudo" class="gut w">
+<div class="bl-h"><h1>Como eu <span class="mk" data-t="resolvo problemas.">resolvo problemas.</span></h1><p>Textos curtos sobre decisões de backend, automação e integração, sempre a partir de projetos que eu construí e coloquei no ar.</p></div>
+<div class="filtros" role="group" aria-label="Filtrar por assunto">
+{categorias.map((c) => <button type="button" data-f={c} aria-pressed={c === "Todos" ? "true" : "false"}>{c}</button>)}
+</div>
+<div class="posts">
+{posts.map((p) => (
+<a class="post lido" data-cat={p.data.categoria} href={`/blog/${p.id}/`}><div class="meta"><span class="chip">{p.data.categoria}</span><span>{dia(p.data.pubDate)}</span><span>{p.data.leitura}</span></div><h2>{p.data.title}</h2><p>{p.data.resumo ?? p.data.description}</p><span class="ler">Ler texto</span></a>
+))}
+<div class="grade">
+{emBreve.map((e) => (
+<div class="post breve" data-cat={e.categoria}><div class="meta"><span class="chip">{e.categoria}</span><span>Em breve</span></div><h2>{e.titulo}</h2><p>{e.resumo}</p></div>
+))}
+</div>
+<p class="vazio" id="vazio" hidden>Nenhum texto nesse assunto ainda.</p>
+</div>
+<section class="fimb"><div class="fim"><h2>Quer falar sobre algum <span class="mk" data-t="desses temas?">desses temas?</span></h2><p>Me chama no WhatsApp ou por e-mail. Gosto de conversar sobre como cada decisão foi tomada.</p><div class="acoes"><a class="btn" href="https://wa.me/5585988350966?text=Ol%C3%A1%2C%20Henry!%20Li%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener">Falar comigo no WhatsApp</a><a class="btn btn-ghost" href="/#experiencia">Ver experiência</a></div></div></section>
+</main>
+</Base>
+<script is:inline>
+(function () {
+  var bs = document.querySelectorAll('.filtros button'), ps = document.querySelectorAll('.post[data-cat]'), vz = document.getElementById('vazio');
+  bs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var c = b.getAttribute('data-f'), n = 0;
+      bs.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      ps.forEach(function (p) { var ok = c === 'Todos' || p.getAttribute('data-cat') === c; p.hidden = !ok; if (ok) n++; });
+      vz.hidden = n > 0;
+    });
+  });
+})();
+</script>
