@@ -1,9 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import Sugeriu from "../components/home/Sugeriu.astro";
+import { migalhas } from "../data/site";
 import "../styles/home.css";
+
+const site = Astro.site!.origin;
+const dados = { "@context": "https://schema.org", ...migalhas(site, [["Início", "/"], ["Sugeriu", "/sugeriu/"]]) };
 ---
-<Base titulo="Sugeriu · Henry Kauã" descricao="Extensão do Chrome que sugere respostas com IA dentro do WhatsApp Web, para quem atende clientes o dia inteiro." atual="outra">
+<Base titulo="Sugeriu · Henry Kauã" descricao="Extensão do Chrome que sugere respostas com IA dentro do WhatsApp Web, para quem atende clientes o dia inteiro." atual="outra" dados={dados}>
 <main id="conteudo" class="dv gut w">
 <a class="volta" href="/#projetos">← Projetos</a>
 <Sugeriu />

@@ -1,9 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import Area from "../components/home/Area.astro";
+import { migalhas } from "../data/site";
 import "../styles/home.css";
+
+const site = Astro.site!.origin;
+const dados = { "@context": "https://schema.org", ...migalhas(site, [["Início", "/"], ["Área do cliente", "/area/"]]) };
 ---
-<Base titulo="Área do cliente · Henry Kauã" descricao="Portal onde o cliente entra com a conta Google e vê o movimento do site, o vencimento do domínio e as parcelas." atual="outra">
+<Base titulo="Área do cliente · Henry Kauã" descricao="Portal onde o cliente entra com a conta Google e vê o movimento do site, o vencimento do domínio e as parcelas." atual="outra" dados={dados}>
 <main id="conteudo" class="dv gut w">
 <a class="volta" href="/#projetos">← Projetos</a>
 <Area />

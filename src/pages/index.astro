@@ -5,16 +5,25 @@ import Experiencia from "../components/home/Experiencia.astro";
 import { emBreve } from "../data/em-breve";
 import { projetos, stack } from "../data/projetos";
 import { avanco, github, linkedin, whatsapp } from "../data/links";
+import { pessoa } from "../data/site";
 import "../styles/home.css";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const site = Astro.site!.origin;
+const dados = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": `${site}/#site`, name: "Henry Kauã", url: `${site}/`, inLanguage: "pt-BR", publisher: { "@id": `${site}/#henry` } },
+    pessoa(site),
+  ],
+};
 const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 ---
-<Base titulo="Henry Kauã · Desenvolvedor" descricao="Desenvolvedor em Fortaleza. Textos sobre automação e backend, e projetos como o Movimento, analytics sem cookie e sem custo mensal." atual="home">
+<Base titulo="Henry Kauã · Desenvolvedor" descricao="Desenvolvedor em Fortaleza. Textos sobre automação e backend, e projetos como o Movimento, analytics sem cookie e sem custo mensal." atual="home" dados={dados}>
 <main id="conteudo" class="dv gut w">
 <div class="intro" id="inicio">
   <p class="k">Fortaleza, CE · Desenvolvedor</p>
-  <h1>Henry Kauã</h1>
+  <h1>Henry Kauã<span class="so">, desenvolvedor em Fortaleza</span></h1>
   <p class="lead">Automatizo processos e integro sistemas com Python, Node.js e SQL. Abaixo estão os projetos que mantenho no ar e o que já coloquei em produção no trabalho.</p>
   <div class="acoes">
     <a class="btn" href="#contatos">Meus contatos</a>

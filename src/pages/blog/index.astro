@@ -1,12 +1,22 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import { migalhas, pessoa } from "../../data/site";
 import "../../styles/blog.css";
 
+const site = Astro.site!.origin;
+
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const dados = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Blog", name: "Blog do Henry Kauã", url: `${site}/blog/`, inLanguage: "pt-BR", author: pessoa(site) },
+    migalhas(site, [["Início", "/"], ["Blog", "/blog/"]]),
+  ],
+};
 const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 ---
-<Base titulo="Blog · Henry Kauã" descricao="Textos sobre como eu resolvo problemas de backend, automação e integração, sempre a partir de projetos reais." atual="blog">
+<Base titulo="Blog · Henry Kauã" descricao="Textos sobre como eu resolvo problemas de backend, automação e integração, sempre a partir de projetos reais." atual="blog" dados={dados}>
 <main id="conteudo" class="gut w lista-blog">
 <div class="bl-h"><p class="k">Blog</p><h1>Últimas atualizações</h1><p>Os textos mais recentes sobre automação, backend e os projetos que eu construí e coloquei no ar.</p></div>
 <div class="posts">

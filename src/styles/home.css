@@ -1,6 +1,6 @@
 .dv section { padding-block: clamp(44px, 7vw, 76px) 0; scroll-margin-top: 72px; }
 .dv .sh { max-width: 44rem; display: grid; gap: 10px; margin-bottom: 28px; }
-.dv .sh h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.12; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
+.dv .sh h1, .dv .sh h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.12; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
 .dv .sh p { font-size: 18px; color: var(--body); text-wrap: pretty; }
 .dv .sh .chips { margin-bottom: 2px; }
 

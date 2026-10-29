@@ -20,6 +20,8 @@ html { padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; scro
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--sans); font-feature-settings: "kern", "liga"; min-height: 100dvh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-underline-offset: 3px; }
 h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
+/* Texto só pra leitor de tela e buscadores. */
+.so { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 ul { padding: 0; list-style: none; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 .skip { position: absolute; left: -9999px; }
