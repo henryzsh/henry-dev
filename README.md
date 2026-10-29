@@ -22,7 +22,6 @@ src/layouts/Base.astro     <head>, topo, rodapé e scripts
 src/components/            topo, rodapé e as seções da home (components/home)
 src/pages/                 index, blog, 404 e sitemap.xml
 src/content/blog/*.md      um arquivo por texto do blog
-src/data/em-breve.ts       textos planejados que ainda não foram escritos
 src/styles/                base.css (comum), home.css e blog.css (por página)
 public/                    fonte DM Sans, imagem do painel, favicon, robots e _headers
 wrangler.jsonc             Worker só de arquivos estáticos + domínio personalizado
@@ -44,8 +43,7 @@ leitura: 4 min de leitura
 ---
 ```
 
-A categoria é uma destas: Backend, Privacidade, Segurança, Automação, Casos. Se o texto estava em
-`src/data/em-breve.ts`, apague de lá.
+A categoria é uma destas: Backend, Privacidade, Segurança, Automação, Casos.
 
 ## Deploy
 

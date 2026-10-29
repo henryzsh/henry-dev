@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Experiencia from "../components/home/Experiencia.astro";
-import { emBreve } from "../data/em-breve";
 import { projetos, stack } from "../data/projetos";
 import { avanco, github, linkedin, whatsapp } from "../data/links";
 import { pessoa } from "../data/site";
@@ -47,9 +46,6 @@ const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: 
 <div class="textos">
 {posts.map((p) => (
 <a class="t" href={`/blog/${p.id}/`}><div class="d">{dia(p.data.pubDate)}</div><div><h3>{p.data.title}</h3><p>{p.data.resumo ?? p.data.description}</p><div class="tags"><span class="chip">{p.data.categoria}</span><span>{p.data.leitura}</span></div></div></a>
-))}
-{emBreve.map((e) => (
-<div class="t breve"><div class="d">Em breve</div><div><h3>{e.titulo}</h3><p>{e.resumo}</p><div class="tags"><span class="chip">{e.categoria}</span></div></div></div>
 ))}
 </div></section>
 </main>
