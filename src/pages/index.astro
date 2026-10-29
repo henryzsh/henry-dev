@@ -1,24 +1,47 @@
 ---
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import Hero from "../components/home/Hero.astro";
 import Experiencia from "../components/home/Experiencia.astro";
-import Movimento from "../components/home/Movimento.astro";
-import Sugeriu from "../components/home/Sugeriu.astro";
-import Area from "../components/home/Area.astro";
-import Projetos from "../components/home/Projetos.astro";
-import Stack from "../components/home/Stack.astro";
-import Contato from "../components/home/Contato.astro";
+import { emBreve } from "../data/em-breve";
+import { projetos, stack } from "../data/projetos";
+import { avanco, github, linkedin, whatsapp } from "../data/links";
 import "../styles/home.css";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 ---
-<Base titulo="Henry Kauã · Desenvolvedor backend" descricao="Desenvolvedor backend em Fortaleza. Automações em produção numa contabilidade e produtos próprios, como o Movimento, analytics sem cookie e sem custo mensal. Python, Node.js e SQL." atual="home">
+<Base titulo="Henry Kauã · Desenvolvedor" descricao="Desenvolvedor em Fortaleza. Textos sobre automação e backend, e projetos como o Movimento, analytics sem cookie e sem custo mensal." atual="home">
 <main id="conteudo" class="dv gut w">
-<Hero />
+<div class="intro" id="inicio">
+  <p class="k">Fortaleza, CE · Desenvolvedor</p>
+  <h1>Henry Kauã</h1>
+  <p class="lead">Automatizo processos e integro sistemas com Python, Node.js e SQL. Abaixo estão os projetos que mantenho no ar e o que já coloquei em produção no trabalho.</p>
+  <div class="acoes">
+    <a class="btn" href="#contatos">Meus contatos</a>
+    <a class="btn btn-ghost" href="/sobre/">Sobre mim</a>
+    <a class="ibtn" href={github} target="_blank" rel="noopener" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+    <a class="ibtn" href={linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+  </div>
+  <div class="stk" aria-label="Stack">{stack.map((t) => <span class="chip">{t}</span>)}</div>
+  <p class="peq">Assistente de TI na <a href={avanco} target="_blank" rel="noopener">Avanço Contabilidade</a> · <span class="v">henrykaua21@gmail.com</span> · +55 85 98835-0966 · currículo em PDF por e-mail</p>
+</div>
+<section class="sx" id="projetos"><div class="cab"><h2>Projetos</h2><p>Cada um com o que foi medido ou testado. Os três primeiros têm página com as decisões que tomei.</p></div>
+<div class="projs">
+{projetos.map((p) => p.href ? (
+<a class="pj" href={p.href}><h3><span class="n">{p.nome}</span><span class="chip">{p.chip}</span></h3><p>{p.desc}</p><p class="ev">{p.ev}</p><span class="seta" aria-hidden="true">→</span></a>
+) : (
+<div class="pj"><h3><span class="n">{p.nome}</span><span class="chip">{p.chip}</span></h3><p>{p.desc}</p><p class="ev">{p.ev}</p></div>
+))}
+</div></section>
 <Experiencia />
-<Movimento />
-<Sugeriu />
-<Area />
-<Projetos />
-<Stack />
-<Contato />
+<section class="sx" id="textos"><div class="cab"><h2>Textos</h2><a href="/blog/">Todos os textos →</a></div>
+<div class="textos">
+{posts.map((p) => (
+<a class="t" href={`/blog/${p.id}/`}><div class="d">{dia(p.data.pubDate)}</div><div><h3>{p.data.title}</h3><p>{p.data.resumo ?? p.data.description}</p><div class="tags"><span class="chip">{p.data.categoria}</span><span>{p.data.leitura}</span></div></div></a>
+))}
+{emBreve.map((e) => (
+<div class="t breve"><div class="d">Em breve</div><div><h3>{e.titulo}</h3><p>{e.resumo}</p><div class="tags"><span class="chip">{e.categoria}</span></div></div></div>
+))}
+</div></section>
 </main>
 </Base>

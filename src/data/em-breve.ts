@@ -1,5 +1,3 @@
-export const categorias = ["Todos", "Backend", "Privacidade", "Segurança", "Automação", "Casos"] as const;
-
 // Textos planejados que ainda não foram escritos. Quando um virar post, apague daqui e crie o .md em src/content/blog.
 export const emBreve = [
   { categoria: "Casos", titulo: "Como validei o Movimento contra o GoatCounter", resumo: "Piloto em 2 sites de clientes, comparação dia a dia e hora a hora, e o que fazer quando o seu número diverge em 33% do de uma ferramenta pronta." },

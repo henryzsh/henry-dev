@@ -6,7 +6,7 @@ import "../styles/base.css";
 interface Props {
   titulo: string;
   descricao: string;
-  atual: "home" | "blog" | "outra";
+  atual: "home" | "blog" | "sobre" | "outra";
   tipo?: "website" | "article";
 }
 const { titulo, descricao, atual, tipo = "website" } = Astro.props;
@@ -37,35 +37,13 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
 <Footer atual={atual} />
 <script is:inline>
 (function () {
-  var nav = document.querySelector('.nav'), ult = 0, reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  addEventListener('scroll', function () {
-    var y = Math.max(0, scrollY);
-    if (y < 80) nav.classList.remove('oculto');
-    else if (y > ult + 6) nav.classList.add('oculto');
-    else if (y < ult - 6) nav.classList.remove('oculto');
-    ult = y;
-  }, { passive: true });
-  var ls = document.querySelectorAll('.links a');
-  if (ls.length && 'IntersectionObserver' in window) {
-    var mapa = {}; ls.forEach(function (a) { mapa[a.getAttribute('href').slice(1)] = a; });
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { ls.forEach(function (a) { a.removeAttribute('aria-current'); }); var a = mapa[e.target.id]; if (a) a.setAttribute('aria-current', 'true'); } });
-    }, { rootMargin: '-35% 0px -55% 0px' });
-    Object.keys(mapa).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
-  }
-  addEventListener('hashchange', function () { nav.classList.add('oculto'); });
-  document.querySelectorAll('[data-copia]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var t = b.getAttribute('data-copia'), antes = b.textContent;
-      function ok() { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = antes; }, 1600); }
-      function sel() {
-        var v = document.querySelector('.fim .v') || b.parentNode.querySelector('.v'); if (!v) return;
-        var r = document.createRange(); r.selectNodeContents(v); var s = getSelection(); s.removeAllRanges(); s.addRange(r);
-        b.textContent = 'Selecionado'; setTimeout(function () { b.textContent = antes; }, 1600);
-      }
-      try { navigator.clipboard.writeText(t).then(ok, sel); } catch (e) { sel(); }
-    });
-  });
+  var ls = document.querySelectorAll('.links a[href^="#"]');
+  if (!ls.length || !('IntersectionObserver' in window)) return;
+  var mapa = {}; ls.forEach(function (a) { mapa[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { ls.forEach(function (a) { a.removeAttribute('aria-current'); }); var a = mapa[e.target.id]; if (a) a.setAttribute('aria-current', 'true'); } });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  Object.keys(mapa).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
 })();
 </script>
 </body>

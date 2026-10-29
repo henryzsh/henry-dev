@@ -7,7 +7,7 @@
 }
 :root {
   color-scheme: light;
-  --paper: #f8f5ed; --card: #ffffff; --hair: #e3ddcd; --hair2: #d2cab4; --ink: #000000; --body: #3d3d3a; --muted: #5c5c5c;
+  --paper: #f8f5ed; --card: #f8f5ed; --hair: #e3ddcd; --hair2: #d2cab4; --ink: #000000; --body: #3d3d3a; --muted: #5c5c5c;
   --green: #1d6f3a; --mint: #6ece9d; --accent: #ffda6e; --hover: #fff3c9;
   --logo-face: #ffffff; --logo-side: #ffda6e; --logo-line: #000000; --logo-h: #000000;
   --ring: 0 0 0 1px var(--hair);
@@ -29,7 +29,6 @@ ul { padding: 0; list-style: none; }
 
 /* topo (igual ao do site de vendas) */
 .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; height: 64px; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: transform .28s cubic-bezier(.2,.7,.2,1); }
-.nav.oculto { transform: translateY(-110%); }
 @media (prefers-reduced-motion: reduce) { .nav { transition: none; } }
 .nav-in { display: flex; align-items: center; gap: 20px; height: 100%; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; min-width: 44px; }
@@ -97,3 +96,8 @@ footer { margin-top: auto; box-shadow: 0 -1px 0 var(--hair); }
 .copy a:hover { color: var(--ink); }
 
 .links a[aria-current="true"] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 8px; }
+
+/* botões com o mesmo canto em todo o site; só etiquetas (chips) ficam redondas */
+.ibtn, .mini { border-radius: 6px; }
+@media (max-width: 960px) { .links { display: flex; gap: 18px; margin-left: auto; } }
+@media (max-width: 640px) { .brand .nome { display: none; } .links { gap: 14px; font-size: 13px; } }

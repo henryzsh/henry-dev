@@ -1,13 +1,14 @@
 ---
+import { github, linkedin } from "../data/links";
 interface Props { atual: "home" | "blog" | "outra" }
 const { atual } = Astro.props;
 const a = atual === "home" ? "" : "/";
 ---
 <footer><div class="gut w">
   <div class="foot">
-    <div class="f1"><a class="brand" href={a + "#inicio"} aria-label="Henry Kauã, topo"><svg class="marca logo full" width="32" height="32" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href={a + "#marca"}/></svg><svg class="marca logo sm" width="30" height="30" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca-sm"/></svg><span class="nome">Henry Kauã</span></a><p>Desenvolvedor backend em Fortaleza. Automação, integrações e produtos próprios.</p></div>
-    <div><h3>Navegar</h3><a href={a + "#experiencia"}>Experiência</a><a href={a + "#movimento"}>Movimento</a><a href={a + "#sugeriu"}>Sugeriu</a><a href={a + "#projetos"}>Projetos</a><a href={a + "#stack"}>Stack</a><a href="/blog/" aria-current={atual === "blog" ? "true" : undefined}>Blog</a></div>
-    <div><h3>Contato</h3><span>henrykaua21@gmail.com</span><span>+55 85 98835-0966</span><span>Fortaleza, CE</span><a href="https://github.com/henryzsh" target="_blank" rel="noopener">GitHub ↗</a></div>
+    <div class="f1"><a class="brand" href={a + "#inicio"} aria-label="Henry Kauã, topo"><svg class="marca logo full" width="32" height="32" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca"/></svg><svg class="marca logo sm" width="30" height="30" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca-sm"/></svg><span class="nome">Henry Kauã</span></a><p>Desenvolvedor em Fortaleza. Automação, integrações e produtos próprios.</p></div>
+    <div><h3>Navegar</h3><a href={a + "#projetos"}>Projetos</a><a href={a + "#experiencia"}>Experiência</a><a href="/blog/">Blog</a><a href="/sobre/">Sobre</a></div>
+    <div id="contatos"><h3>Contato</h3><span>henrykaua21@gmail.com</span><span>+55 85 98835-0966</span><span>Fortaleza, CE</span><a href={github} target="_blank" rel="noopener">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener">LinkedIn ↗</a></div>
   </div>
   <div class="copy"><span>© 2026 Henry Kauã. Todos os direitos reservados.</span></div>
 </div></footer>
