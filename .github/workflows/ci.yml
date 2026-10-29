@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Build do site (Astro)
+        run: npm run build
+      # Monta o Worker com os arquivos do site sem publicar nada (não precisa de conta da Cloudflare)
+      - name: Deploy simulado
+        run: npx wrangler deploy --dry-run
