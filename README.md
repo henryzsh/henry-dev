@@ -1,10 +1,11 @@
 # henry-dev
 
-Portfólio e blog do Henry Kauã (desenvolvedor backend), em `dev.henrykaua.com.br`.
+Portfólio e blog do Henry Kauã (desenvolvedor), em `dev.henrykaua.com.br`.
 O site de vendas é outro projeto, em `henrykaua.com.br`.
 
-Astro, só HTML e CSS estáticos: nenhuma página manda JavaScript de framework. Os dois scripts
-(menu que esconde ao rolar e filtro do blog) são pequenos e ficam dentro da própria página.
+Astro, só HTML e CSS estáticos: nenhuma página manda JavaScript de framework. O único script
+(marca no menu a seção que está na tela, na home) é pequeno e vai num arquivo à parte: o CSP em
+`public/_headers` não deixa script embutido no HTML.
 
 ## Comandos
 
@@ -18,12 +19,13 @@ Astro, só HTML e CSS estáticos: nenhuma página manda JavaScript de framework.
 ## Como é organizado
 
 ```
-src/layouts/Base.astro     <head>, topo, rodapé e scripts
-src/components/            topo, rodapé e as seções da home (components/home)
-src/pages/                 index, blog, 404 e sitemap.xml
+src/layouts/Base.astro     <head>, topo, rodapé e o script do menu
+src/components/            topo, rodapé e as seções das páginas de projeto (components/home)
+src/pages/                 index, sobre, movimento, sugeriu, area, blog, 404, rss.xml e sitemap.xml
 src/content/blog/*.md      um arquivo por texto do blog
+src/data/                  links, projetos, números que se repetem (numeros.ts) e dados do Google (site.ts)
 src/styles/                base.css (comum), home.css e blog.css (por página)
-public/                    fonte DM Sans, imagem do painel, favicon, robots e _headers
+public/                    fonte DM Sans, imagem do painel, favicon, robots e _headers (CSP)
 wrangler.jsonc             Worker só de arquivos estáticos + domínio personalizado
 ```
 
@@ -45,11 +47,17 @@ leitura: 4 min de leitura
 
 A categoria é uma destas: Backend, Privacidade, Segurança, Automação, Casos.
 
+## Ao mexer em páginas fixas
+
+- Números que aparecem em mais de uma página (testes, sites medidos) ficam em `src/data/numeros.ts`.
+- Mudou o conteúdo de sobre, movimento, sugeriu, area ou da home? Atualize `ATUALIZADO` em
+  `src/data/site.ts`: é a data do sitemap.
+
 ## Deploy
 
 `npm run deploy` publica em `dev.henrykaua.com.br`. No primeiro deploy o Cloudflare cria o DNS e o
 certificado desse subdomínio (a zona `henrykaua.com.br` precisa estar na mesma conta).
-Depois, no site de vendas, a rota `/dev` deve passar a redirecionar (301) para cá.
+No site de vendas, a rota `/dev` já redireciona (301) para cá.
 
 ## Decisões
 
