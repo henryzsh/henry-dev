@@ -1,6 +1,6 @@
 ---
 import { github, linkedin } from "../data/links";
-interface Props { atual: "home" | "blog" | "outra" }
+interface Props { atual: "home" | "blog" | "sobre" | "outra" }
 const { atual } = Astro.props;
 const a = atual === "home" ? "" : "/";
 ---
