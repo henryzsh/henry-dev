@@ -1,7 +1,7 @@
-<section id="area" class="pg"><div class="sh"><h1>Área do cliente</h1><p>Portal onde o cliente entra com a conta Google e vê o movimento do próprio site, o vencimento do domínio e as parcelas, com Pix e envio de comprovante. Eu entro como administrador e vejo todos os sites numa tela só.</p></div><div class="card"><h3 class="sub3">Como funciona</h3><ul class="lista">
-    <li>Interface em Next.js com export estático: as telas são cascas vazias e os dados só chegam pela API, depois do login.</li>
+<section id="area" class="pg"><div class="sh"><h1>Área do cliente</h1><p>Portal onde o cliente entra com a conta Google e vê o movimento do próprio site, o vencimento do domínio e as parcelas, que ele paga online por Pix ou cartão. Eu entro como administrador e vejo todos os sites numa tela só.</p></div><div class="card"><h3 class="sub3">Como funciona</h3><ul class="lista">
+    <li>Interface em Astro, só páginas estáticas: as telas são cascas vazias e os dados só chegam pela API, depois do login.</li>
     <li>Worker de API pequeno com Hono: login com Google (OpenID Connect com PKCE, via Arctic) e sessão própria no D1. O cookie leva um id aleatório e o banco guarda só o hash dele.</li>
     <li>Os números vêm do Movimento por Service Binding, de Worker pra Worker. A cada pedido, a API confere se aquele e-mail pode ver aquele site.</li>
-    <li>Um cron diário consulta o RDAP do Registro.br e avisa o vencimento do domínio. O Pix é gerado no próprio Worker (BR Code com CRC), sem intermediário.</li></ul>
-  <p class="nota" style="margin-top:18px">A restrição que guia tudo: custo zero além do domínio. Por isso não tem SSR, o login é só com Google (sem senha pra guardar) e os 87 testes rodam no GitHub Actions a cada push.</p></div>
+    <li>Um cron diário consulta o RDAP do Registro.br e avisa o vencimento do domínio. O pagamento das parcelas é pelo checkout da InfinitePay (Pix ou cartão). O aviso dela não vem assinado, então a API pergunta de novo à InfinitePay e confere o valor antes de marcar a parcela como paga.</li></ul>
+  <p class="nota" style="margin-top:18px">A restrição que guia tudo: custo zero além do domínio. Por isso não tem SSR, o login é só com Google (sem senha pra guardar) e os 117 testes rodam no GitHub Actions a cada push.</p></div>
 </section>
