@@ -54,7 +54,7 @@ const imagem = new URL("/og-image.png", Astro.site);
 <Header atual={atual} />
 <slot />
 <Footer atual={atual} />
-<script is:inline>
+<script>
 (function () {
   var ls = document.querySelectorAll('.links a[href^="#"]');
   if (!ls.length || !('IntersectionObserver' in window)) return;
