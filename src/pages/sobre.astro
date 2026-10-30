@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { pessoa } from "../data/site";
+import { numeros } from "../data/numeros";
 import "../styles/home.css";
 
 const site = Astro.site!.origin;
@@ -19,7 +20,7 @@ const dados = {
 <p>O que mais me interessa é o resultado: menos trabalho repetido, números que batem com a realidade e custo que cabe no bolso.</p></div>
 <div class="sobre-id"><dl class="card id" aria-label="Resumo">
     <div><dt>Hoje</dt><dd>Assistente de TI na <a href="https://avancontabilidade.com.br/" target="_blank" rel="noopener">Avanço Contabilidade</a>, com automações em produção</dd></div>
-    <div><dt>Produto no ar</dt><dd>Movimento: analytics sem cookie, R$ 0 por mês, medindo 3 sites</dd></div>
+    <div><dt>Produto no ar</dt><dd>Movimento: analytics sem cookie, R$ 0 por mês, medindo {numeros.sitesMedidos} sites</dd></div>
     <div><dt>Em finalização</dt><dd>Sugeriu: extensão de respostas com IA no WhatsApp Web</dd></div>
     
   </dl></div>
@@ -31,7 +32,7 @@ const dados = {
 <ul class="lista">
 <li>Começo pelo problema de quem vai usar e só depois escolho a ferramenta.</li>
 <li>Mantenho o custo baixo: o Movimento e a Área do cliente rodam sem mensalidade além do domínio.</li>
-<li>Testo o que entrego: 117 testes automáticos no Movimento, 167 no Sugeriu e 117 na Área do cliente.</li>
+<li>Testo o que entrego: {numeros.testesMovimento} testes automáticos no Movimento, {numeros.testesSugeriu} no Sugeriu e {numeros.testesArea} na Área do cliente.</li>
 <li>Cuido da privacidade de quem usa: sem cookie, sem guardar IP e com dados sensíveis mascarados antes de sair do navegador.</li>
 </ul></section>
 <section class="sx"><div class="acoes"><a class="btn" href="/#projetos">Ver projetos</a><a class="btn btn-ghost" href="/blog/">Ler o blog</a></div></section>
