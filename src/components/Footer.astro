@@ -1,5 +1,5 @@
 ---
-import { github, linkedin } from "../data/links";
+import { email, github, linkedin, telefone } from "../data/links";
 interface Props { atual: "home" | "blog" | "sobre" | "outra" }
 const { atual } = Astro.props;
 const a = atual === "home" ? "" : "/";
@@ -8,7 +8,7 @@ const a = atual === "home" ? "" : "/";
   <div class="foot">
     <div class="f1"><a class="brand" href={a + "#inicio"} aria-label="Henry Kauã, topo"><svg class="marca logo full" width="32" height="32" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca"/></svg><svg class="marca logo sm" width="30" height="30" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca-sm"/></svg><span class="nome">Henry Kauã</span></a><p>Desenvolvedor em Fortaleza. Automação, integrações e produtos próprios.</p></div>
     <div><h2>Navegar</h2><a href={a + "#projetos"}>Projetos</a><a href={a + "#experiencia"}>Experiência</a><a href="/blog/">Blog</a><a href="/sobre/">Sobre</a></div>
-    <div id="contatos"><h2>Contato</h2><span>henrykaua21@gmail.com</span><span>+55 85 98835-0966</span><span>Fortaleza, CE</span><a href={github} target="_blank" rel="noopener">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener">LinkedIn ↗</a></div>
+    <div id="contatos"><h2>Contato</h2><span>{email}</span><span>{telefone}</span><span>Fortaleza, CE</span><a href={github} target="_blank" rel="noopener">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener">LinkedIn ↗</a></div>
   </div>
   <div class="copy"><span>© 2026 Henry Kauã. Todos os direitos reservados.</span></div>
 </div></footer>

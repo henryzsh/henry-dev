@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Experiencia from "../components/home/Experiencia.astro";
 import { projetos, stack } from "../data/projetos";
-import { avanco, github, linkedin, whatsapp } from "../data/links";
+import { avanco, email, github, linkedin, telefone } from "../data/links";
 import { pessoa } from "../data/site";
 import "../styles/home.css";
 
@@ -31,7 +31,7 @@ const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: 
     <a class="ibtn" href={linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
   </div>
   <div class="stk" aria-label="Stack">{stack.map((t) => <span class="chip">{t}</span>)}</div>
-  <p class="peq">Assistente de TI na <a href={avanco} target="_blank" rel="noopener">Avanço Contabilidade</a> · <span class="v">henrykaua21@gmail.com</span> · +55 85 98835-0966 · currículo em PDF por e-mail</p>
+  <p class="peq">Assistente de TI na <a href={avanco} target="_blank" rel="noopener">Avanço Contabilidade</a> · <span class="v">{email}</span> · {telefone} · currículo em PDF por e-mail</p>
 </div>
 <section class="sx" id="projetos"><div class="cab"><h2>Projetos</h2><p>Cada um com o que foi medido ou testado. Os três primeiros têm página com as decisões que tomei.</p></div>
 <div class="projs">
