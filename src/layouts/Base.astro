@@ -23,7 +23,7 @@ const imagem = new URL("/og-image.png", Astro.site);
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{titulo}</title>
 <meta name="description" content={descricao}>
-<link rel="canonical" href={canonico}>
+{!semIndexar && <link rel="canonical" href={canonico}>}
 {semIndexar && <meta name="robots" content="noindex">}
 <meta property="og:type" content={tipo}>
 <meta property="og:site_name" content="Henry Kauã">
