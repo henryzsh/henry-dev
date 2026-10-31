@@ -1,22 +1,11 @@
-## Development
+# Regras deste repositório
 
-When starting the dev server, use background mode:
+- Textos em pt-BR, sem travessão (— ou –). Clientes sempre no masculino.
+- Mexeu no conteúdo de sobre, movimento, sugeriu, area, privacidade ou da home? Atualize `ATUALIZADO` em `src/data/site.ts` (data do sitemap).
+- Os números das páginas de projeto ficam em `src/data/numeros.ts`. Reconfira com os comandos do comentário antes de publicar.
+- Nenhum script embutido no HTML: o CSP em `public/_headers` não deixa. Script vai em arquivo.
+- Ao trocar uma imagem ou a fonte, mude também o nome do arquivo: eles ficam 30 dias no cache do navegador.
 
-```
-astro dev --background
-```
+## Servidor de desenvolvimento
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
-
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+Suba em segundo plano com `astro dev --background`. Gerencie com `astro dev stop`, `astro dev status` e `astro dev logs`.
