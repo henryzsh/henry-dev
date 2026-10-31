@@ -8,7 +8,7 @@
 :root {
   color-scheme: light;
   --paper: #f8f5ed; --card: #f8f5ed; --hair: #e3ddcd; --hair2: #d2cab4; --ink: #000000; --body: #3d3d3a; --muted: #5c5c5c;
-  --green: #1d6f3a; --mint: #6ece9d; --accent: #ffda6e; --hover: #fff3c9;
+  --accent: #ffda6e; --hover: #fff3c9;
   --logo-face: #ffffff; --logo-side: #ffda6e; --logo-line: #000000; --logo-h: #000000;
   --ring: 0 0 0 1px var(--hair);
   --sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -42,7 +42,7 @@ ul { padding: 0; list-style: none; }
 .links a:hover { color: var(--muted); }
 .ibtn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; min-width: 44px; padding: 0 14px 0 12px; border-radius: 9999px; border: 0; cursor: pointer; font: 400 14px/1 var(--sans); text-decoration: none; flex: none; color: var(--ink); background: var(--card); box-shadow: inset 0 0 0 1px var(--hair2); transition: background .15s; }
 .ibtn:hover { background: var(--hover); }
-@media (max-width: 960px) { .links { display: none; } .ibtn:not(.txt) { padding: 0; width: 44px; } .ibtn:not(.txt) span { display: none; } }
+@media (max-width: 960px) { .links { display: none; } .ibtn { padding: 0; width: 44px; } .ibtn span { display: none; } }
 @media (max-width: 520px) { .brand .logo.full { display: none; } .brand .logo.sm { display: block; width: 30px; height: 30px; } .nav-in { gap: 8px; } }
 
 /* botões */
