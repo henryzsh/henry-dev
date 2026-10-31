@@ -25,10 +25,10 @@
 }
 
 .topo-case { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px 16px; margin-bottom: 22px; }
-.topo-case h3 { font-size: clamp(1.35rem, 2.6vw, 1.8rem); line-height: 1.18; letter-spacing: -.015em; font-weight: 600; max-width: 30ch; text-wrap: balance; }
+.topo-case h2 { font-size: clamp(1.35rem, 2.6vw, 1.8rem); line-height: 1.18; letter-spacing: -.015em; font-weight: 600; max-width: 30ch; text-wrap: balance; }
 .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px; }
 @media (max-width: 760px) { .duo { grid-template-columns: minmax(0, 1fr); } }
-.bl h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.bl h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 .bl p { color: var(--body); font-size: 15px; text-wrap: pretty; }
 .bl p + p { margin-top: 10px; }
 .fluxo { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 26px; }
@@ -46,7 +46,7 @@
 .dec.tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 960px) { .dec.tres { grid-template-columns: minmax(0, 1fr); } }
 .dec .card { display: grid; gap: 10px; align-content: start; }
-.dec h4 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.dec h3 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
 .dec p { color: var(--body); font-size: 15px; text-wrap: pretty; }
 .apoio { margin-top: 16px; display: grid; gap: 22px; }
 .tab { overflow-x: auto; border-radius: 10px; box-shadow: 0 0 0 1px var(--hair2); }

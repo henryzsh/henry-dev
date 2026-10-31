@@ -70,7 +70,7 @@ code, .code { font: 400 13px/1.5 var(--mono); background: var(--paper); box-shad
 footer { margin-top: auto; box-shadow: 0 -1px 0 var(--hair); }
 .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; padding-block: 40px 28px; font-size: 14px; color: var(--body); }
 .foot > div { display: grid; align-content: start; }
-.foot h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.foot h2 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .foot a, .foot span { display: inline-flex; align-items: center; min-height: 36px; text-decoration: none; color: var(--ink); overflow-wrap: anywhere; }
 .foot a:hover { color: var(--muted); }
 .foot .brand { min-height: 44px; }
