@@ -21,7 +21,7 @@ Astro, só HTML e CSS estáticos: nenhuma página manda JavaScript de framework.
 ```
 src/layouts/Base.astro     <head>, topo, rodapé e o script do menu
 src/components/            topo, rodapé e as seções das páginas de projeto (components/home)
-src/pages/                 index, sobre, movimento, sugeriu, area, blog, 404, rss.xml e sitemap.xml
+src/pages/                 index, sobre, movimento, sugeriu, area, privacidade, blog, 404, rss.xml e sitemap.xml
 src/content/blog/*.md      um arquivo por texto do blog
 src/data/                  links, projetos, números que se repetem (numeros.ts) e dados do Google (site.ts)
 src/styles/                base.css (comum), home.css e blog.css (por página)
@@ -49,8 +49,9 @@ A categoria é uma destas: Backend, Privacidade, Segurança, Automação, Casos.
 
 ## Ao mexer em páginas fixas
 
-- Números que aparecem em mais de uma página (testes, sites medidos) ficam em `src/data/numeros.ts`.
-- Mudou o conteúdo de sobre, movimento, sugeriu, area ou da home? Atualize `ATUALIZADO` em
+- Números que aparecem em mais de uma página (testes, sites medidos) ficam em `src/data/numeros.ts`. Eles envelhecem: o
+  comentário no topo do arquivo diz como reconferir cada um e a data da última conferência.
+- Mudou o conteúdo de sobre, movimento, sugeriu, area, privacidade ou da home? Atualize `ATUALIZADO` em
   `src/data/site.ts`: é a data do sitemap.
 
 ## Deploy
