@@ -1,7 +1,7 @@
 import { avanco, github, linkedin } from "./links";
 
 // Data da última mudança de conteúdo nas páginas fixas. Atualize quando mexer em alguma delas (vai pro sitemap).
-export const ATUALIZADO = "2026-10-30";
+export const ATUALIZADO = "2026-10-31";
 
 // Pessoa descrita nos dados estruturados.
 export const pessoa = (site: string) => ({
