@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   conferir:
     runs-on: ubuntu-latest
@@ -14,6 +17,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Tipos (Astro)
+        run: npm run typecheck
       - name: Build do site (Astro)
         run: npm run build
       # Monta o Worker com os arquivos do site sem publicar nada (não precisa de conta da Cloudflare)

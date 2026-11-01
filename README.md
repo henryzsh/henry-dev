@@ -13,6 +13,7 @@ Astro, só HTML e CSS estáticos: nenhuma página manda JavaScript de framework.
 |---|---|
 | `npm run dev` | servidor local com recarga |
 | `npm run build` | gera o site em `dist/` |
+| `npm run typecheck` | confere os tipos das páginas (roda também no CI) |
 | `npm run preview` | serve o `dist/` localmente |
 | `npm run deploy` | build e publicação no Cloudflare (Workers com arquivos estáticos) |
 

@@ -55,15 +55,25 @@ const imagem = new URL("/og-image.png", Astro.site);
 <slot />
 <Footer atual={atual} />
 <script>
-(function () {
-  var ls = document.querySelectorAll('.links a[href^="#"]');
-  if (!ls.length || !('IntersectionObserver' in window)) return;
-  var mapa = {}; ls.forEach(function (a) { mapa[a.getAttribute('href').slice(1)] = a; });
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { ls.forEach(function (a) { a.removeAttribute('aria-current'); }); var a = mapa[e.target.id]; if (a) a.setAttribute('aria-current', 'true'); } });
-  }, { rootMargin: '-35% 0px -55% 0px' });
-  Object.keys(mapa).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
-})();
+  // Marca no menu a seção da home que está na tela.
+  const links = document.querySelectorAll<HTMLAnchorElement>('.links a[href^="#"]');
+  if (links.length && "IntersectionObserver" in window) {
+    const porId = new Map<string, HTMLAnchorElement>();
+    links.forEach((a) => porId.set(a.hash.slice(1), a));
+    const io = new IntersectionObserver(
+      (entradas) =>
+        entradas.forEach((e) => {
+          if (!e.isIntersecting) return;
+          links.forEach((a) => a.removeAttribute("aria-current"));
+          porId.get(e.target.id)?.setAttribute("aria-current", "true");
+        }),
+      { rootMargin: "-35% 0px -55% 0px" },
+    );
+    porId.forEach((_, id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
 </script>
 </body>
 </html>
