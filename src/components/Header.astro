@@ -1,9 +1,10 @@
 ---
+import { navegacao } from "../data/links";
 interface Props { atual: "home" | "blog" | "sobre" | "outra" }
 const { atual } = Astro.props;
 const a = atual === "home" ? "" : "/";
 ---
 <header class="nav"><div class="nav-in gut w">
   <a class="brand" href={a + "#inicio"} aria-label="Henry Kauã, início"><svg class="marca logo full" width="32" height="32" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca"/></svg><svg class="marca logo sm" width="30" height="30" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca-sm"/></svg><span class="nome">Henry Kauã</span></a>
-  <nav class="links" aria-label="Seções"><a href={a + "#projetos"}>Projetos</a><a href={a + "#experiencia"}>Experiência</a><a href="/blog/" aria-current={atual === "blog" ? "true" : undefined}>Blog</a><a href="/sobre/" aria-current={atual === "sobre" ? "true" : undefined}>Sobre</a></nav>
+  <nav class="links" aria-label="Seções">{navegacao.map(([nome, destino]) => <a href={destino.startsWith("#") ? a + destino : destino} aria-current={atual === nome.toLowerCase() ? "true" : undefined}>{nome}</a>)}</nav>
 </div></header>

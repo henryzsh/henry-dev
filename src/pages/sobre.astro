@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { pessoa } from "../data/site";
+import { avanco } from "../data/links";
 import { numeros } from "../data/numeros";
 import "../styles/home.css";
 
@@ -19,13 +20,13 @@ const dados = {
 <p>Sou desenvolvedor em Fortaleza. Automatizo processos e integro sistemas, numa contabilidade e em produtos próprios.</p>
 <p>O que mais me interessa é o resultado: menos trabalho repetido, números que batem com a realidade e custo que cabe no bolso.</p></div>
 <div class="sobre-id"><dl class="card id" aria-label="Resumo">
-    <div><dt>Hoje</dt><dd>Assistente de TI na <a href="https://avancontabilidade.com.br/" target="_blank" rel="noopener">Avanço Contabilidade</a>, com automações em produção</dd></div>
+    <div><dt>Hoje</dt><dd>Assistente de TI na <a href={avanco} target="_blank" rel="noopener">Avanço Contabilidade</a>, com automações em produção</dd></div>
     <div><dt>Produto no ar</dt><dd>Movimento: analytics sem cookie, R$ 0 por mês, medindo {numeros.sitesMedidos} sites</dd></div>
-    <div><dt>Em finalização</dt><dd>Sugeriu: extensão de respostas com IA no WhatsApp Web</dd></div>
+    <div><dt>{numeros.statusSugeriu}</dt><dd>Sugeriu: extensão de respostas com IA no WhatsApp Web</dd></div>
     
   </dl></div>
 <section class="sx"><div class="cab"><h2>No dia a dia</h2></div>
-<p class="prosa">Na <a href="https://avancontabilidade.com.br/" target="_blank" rel="noopener">Avanço Contabilidade</a> sou assistente de TI e o trabalho não tem um lado só: vai de automação de rotinas no ERP e relatórios em SQL até integrações entre APIs e fluxos no n8n. Quando a ferramenta pronta não resolve, eu escrevo a peça que falta.</p></section>
+<p class="prosa">Na <a href={avanco} target="_blank" rel="noopener">Avanço Contabilidade</a> sou assistente de TI e o trabalho não tem um lado só: vai de automação de rotinas no ERP e relatórios em SQL até integrações entre APIs e fluxos no n8n. Quando a ferramenta pronta não resolve, eu escrevo a peça que falta.</p></section>
 <section class="sx"><div class="cab"><h2>Fora do trabalho</h2></div>
 <p class="prosa">Construo produtos para resolver incômodos reais. O Movimento mede os sites dos meus clientes sem cookie e sem custo mensal, o Sugeriu ajuda quem atende pelo WhatsApp e a Área do cliente reúne números, domínio e parcelas num só lugar. Os detalhes de cada um estão em Projetos.</p></section>
 <section class="sx"><div class="cab"><h2>Como eu trabalho</h2></div>
