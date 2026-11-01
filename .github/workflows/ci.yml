@@ -21,6 +21,9 @@ jobs:
         run: npm run typecheck
       - name: Build do site (Astro)
         run: npm run build
+      - name: RSS e sitemap são XML válido
+        run: |
+          python3 -c "import sys, xml.dom.minidom as m; [m.parse(f) for f in sys.argv[1:]]" dist/rss.xml dist/sitemap.xml
       # Monta o Worker com os arquivos do site sem publicar nada (não precisa de conta da Cloudflare)
       - name: Deploy simulado
         run: npx wrangler deploy --dry-run
