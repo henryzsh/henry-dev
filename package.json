@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && wrangler deploy",
+    "deploy": "npm run typecheck && astro build && wrangler deploy",
     "typecheck": "astro check"
   },
   "dependencies": {
