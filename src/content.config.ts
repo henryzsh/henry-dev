@@ -11,7 +11,8 @@ const blog = defineCollection({
     resumo: z.string().optional(),
     pubDate: z.coerce.date(),
     categoria: z.enum(["Backend", "Privacidade", "Segurança", "Automação", "Casos"]),
-    leitura: z.string(),
+    // Mostra no fim do texto a caixa que leva ao case do projeto.
+    caso: z.literal("movimento").optional(),
   }),
 });
 

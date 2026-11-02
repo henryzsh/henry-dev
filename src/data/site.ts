@@ -3,6 +3,9 @@ import { avanco, github, linkedin } from "./links";
 // Data da última mudança de conteúdo nas páginas fixas. Atualize quando mexer em alguma delas (vai pro sitemap).
 export const ATUALIZADO = "2026-11-01";
 
+// Tempo de leitura do texto do blog: palavras do .md divididas por 200 por minuto, no mínimo 1.
+export const leitura = (texto = "") => `${Math.max(1, Math.round(texto.split(/\s+/).filter(Boolean).length / 200))} min de leitura`;
+
 // Pessoa descrita nos dados estruturados.
 export const pessoa = (site: string) => ({
   "@type": "Person",

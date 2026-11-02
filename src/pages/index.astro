@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import Experiencia from "../components/home/Experiencia.astro";
 import { projetos, stack } from "../data/projetos";
 import { avanco, email, github, linkedin, telefone, telefoneLink } from "../data/links";
-import { pessoa } from "../data/site";
+import { leitura, pessoa } from "../data/site";
 import "../styles/home.css";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -45,7 +45,7 @@ const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: 
 <section class="sx" id="textos"><div class="cab"><h2>Textos</h2><a href="/blog/">Todos os textos →</a></div>
 <div class="textos">
 {posts.map((p) => (
-<a class="t" href={`/blog/${p.id}/`}><div class="d">{dia(p.data.pubDate)}</div><div><h3>{p.data.title}</h3><p>{p.data.resumo ?? p.data.description}</p><div class="tags"><span class="chip">{p.data.categoria}</span><span>{p.data.leitura}</span></div></div></a>
+<a class="t" href={`/blog/${p.id}/`}><div class="d">{dia(p.data.pubDate)}</div><div><h3>{p.data.title}</h3><p>{p.data.resumo ?? p.data.description}</p><div class="tags"><span class="chip">{p.data.categoria}</span><span>{leitura(p.body)}</span></div></div></a>
 ))}
 </div></section>
 </main>

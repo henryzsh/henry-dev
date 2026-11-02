@@ -42,11 +42,11 @@ description: Frase para o Google.
 resumo: Texto do card na lista do blog.
 pubDate: 2026-11-02
 categoria: Backend
-leitura: 4 min de leitura
 ---
 ```
 
-A categoria é uma destas: Backend, Privacidade, Segurança, Automação, Casos.
+A categoria é uma destas: Backend, Privacidade, Segurança, Automação, Casos. O tempo de leitura é calculado pelo número de palavras.
+Se o texto fala do Movimento, acrescente `caso: movimento` no cabeçalho: ele ganha a caixa que leva ao case.
 
 ## Ao mexer em páginas fixas
 

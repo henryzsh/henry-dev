@@ -4,7 +4,7 @@ description: Como o Movimento conta visitantes únicos sem cookie e sem guardar 
 resumo: "O truque de um hash que muda todo dia: dá pra saber quantas pessoas visitaram um site sem identificar ninguém e sem banner de cookies. É assim que o Movimento faz."
 pubDate: 2026-10-26
 categoria: Privacidade
-leitura: 5 min de leitura
+caso: movimento
 ---
 
 Eu vendo sites sem mensalidade e queria que cada cliente soubesse quantas pessoas visitam o site dele. As ferramentas prontas ou custavam por mês, ou exigiam banner de cookies, ou limitavam o número de sites. Então criei o Movimento. A parte mais interessante dele é como ele conta visitantes únicos sem identificar ninguém.

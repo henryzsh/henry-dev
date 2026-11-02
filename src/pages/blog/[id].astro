@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
-import { pessoa, migalhas } from "../../data/site";
+import { pessoa, migalhas, leitura } from "../../data/site";
 import { linkWhatsapp } from "../../data/links";
 import "../../styles/blog.css";
 
@@ -38,10 +38,10 @@ const dia = post.data.pubDate.toLocaleDateString("pt-BR", { day: "numeric", mont
 <Base titulo={`${post.data.title} · Henry Kauã`} descricao={post.data.description} atual="blog" tipo="article" dados={dados} publicado={post.data.pubDate}>
 <main id="conteudo" class="gut w"><article class="art">
 <a class="volta" href="/blog/">← Todos os textos</a>
-<div class="meta"><span class="chip">{post.data.categoria}</span><span>{dia}</span><span>{post.data.leitura}</span></div>
+<div class="meta"><span class="chip">{post.data.categoria}</span><span>{dia}</span><span>{leitura(post.body)}</span></div>
 <h1>{post.data.title}</h1>
 <div class="corpo"><Content /></div>
-<div class="caixa"><h2>Quer ver como foi feito?</h2><p>O Movimento tem uma página com o case completo, com as alternativas que avaliei, como validei os números e as decisões que tomei.</p><div class="acoes"><a class="btn" href="/movimento/">Ver o case do Movimento</a><a class="btn btn-ghost" href={linkWhatsapp("Olá, Henry! Li seu blog e quero conversar.")} target="_blank" rel="noopener">Falar comigo</a></div></div>
+{post.data.caso === "movimento" && <div class="caixa"><h2>Quer ver como foi feito?</h2><p>O Movimento tem uma página com o case completo, com as alternativas que avaliei, como validei os números e as decisões que tomei.</p><div class="acoes"><a class="btn" href="/movimento/">Ver o case do Movimento</a><a class="btn btn-ghost" href={linkWhatsapp("Olá, Henry! Li seu blog e quero conversar.")} target="_blank" rel="noopener">Falar comigo</a></div></div>}
 <p class="autor">Escrito por Henry Kauã, desenvolvedor em Fortaleza.</p>
 </article></main>
 </Base>
