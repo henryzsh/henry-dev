@@ -1,4 +1,11 @@
+import { getCollection } from "astro:content";
 import { avanco, github, linkedin } from "./links";
+
+// Textos do blog, do mais novo para o mais antigo.
+export const postsRecentes = async () => (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Data por extenso em UTC (a pubDate é meia-noite UTC).
+export const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 // Data da última mudança de conteúdo nas páginas fixas. Atualize quando mexer em alguma delas (vai pro sitemap).
 export const ATUALIZADO = "2026-11-02";

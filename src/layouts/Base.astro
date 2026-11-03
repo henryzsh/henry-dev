@@ -1,12 +1,13 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import type { Atual } from "../data/links";
 import "../styles/base.css";
 
 interface Props {
   titulo: string;
   descricao: string;
-  atual: "home" | "blog" | "sobre" | "outra";
+  atual: Atual;
   tipo?: "website" | "article";
   dados?: object;
   publicado?: Date;

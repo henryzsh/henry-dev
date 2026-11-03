@@ -1,14 +1,15 @@
 ---
-import { email, github, linkedin, navegacao, telefone, telefoneLink } from "../data/links";
-interface Props { atual: "home" | "blog" | "sobre" | "outra" }
+import Marca from "./Marca.astro";
+import { email, github, linkedin, navegacao, telefone, telefoneLink, type Atual } from "../data/links";
+interface Props { atual: Atual }
 const { atual } = Astro.props;
 const a = atual === "home" ? "" : "/";
 ---
 <footer><div class="gut w">
   <div class="foot">
-    <div class="f1"><a class="brand" href={a + "#inicio"} aria-label="Henry Kauã, topo"><svg class="marca logo full" width="32" height="32" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca"/></svg><svg class="marca logo sm" width="30" height="30" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca-sm"/></svg><span class="nome">Henry Kauã</span></a><p>Desenvolvedor em Fortaleza. Automação, integrações e produtos próprios.</p></div>
+    <div class="f1"><Marca href={a + "#inicio"} rotulo="Henry Kauã, topo" /><p>Desenvolvedor em Fortaleza. Automação, integrações e produtos próprios.</p></div>
     <div><h2>Navegar</h2>{navegacao.map(([nome, destino]) => <a href={destino.startsWith("#") ? a + destino : destino}>{nome}</a>)}</div>
     <div id="contatos"><h2>Contato</h2><a href={`mailto:${email}`}>{email}</a><a href={`tel:${telefoneLink}`}>{telefone}</a><span>Fortaleza, CE</span><a href={github} target="_blank" rel="noopener">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener">LinkedIn ↗</a></div>
   </div>
-  <div class="copy"><span>© 2026 Henry Kauã. Todos os direitos reservados.</span></div>
+  <div class="copy"><span>© {new Date().getFullYear()} Henry Kauã. Todos os direitos reservados.</span></div>
 </div></footer>

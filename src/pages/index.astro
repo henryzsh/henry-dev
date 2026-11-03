@@ -1,13 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Experiencia from "../components/home/Experiencia.astro";
 import { projetos, stack } from "../data/projetos";
 import { avanco, email, github, linkedin, telefone, telefoneLink } from "../data/links";
-import { leitura, pessoa } from "../data/site";
+import { dia, leitura, pessoa, postsRecentes } from "../data/site";
 import "../styles/home.css";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = await postsRecentes();
 const site = Astro.site!.origin;
 const dados = {
   "@context": "https://schema.org",
@@ -16,7 +15,6 @@ const dados = {
     pessoa(site),
   ],
 };
-const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 ---
 <Base titulo="Henry Kauã · Desenvolvedor" descricao="Desenvolvedor em Fortaleza. Textos sobre automação e backend, e projetos como o Movimento, analytics sem cookie e sem custo mensal." atual="home" dados={dados}>
 <main id="conteudo" class="dv gut w">

@@ -1,0 +1,6 @@
+---
+// Logo + nome, usado no topo e no rodapé. Os símbolos #marca e #marca-sm ficam no Base.astro.
+interface Props { href: string; rotulo: string }
+const { href, rotulo } = Astro.props;
+---
+<a class="brand" href={href} aria-label={rotulo}><svg class="marca logo full" width="32" height="32" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca"/></svg><svg class="marca logo sm" width="30" height="30" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#marca-sm"/></svg><span class="nome">Henry Kauã</span></a>

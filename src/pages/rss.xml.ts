@@ -1,10 +1,10 @@
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { postsRecentes } from "../data/site";
 
 const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 export const GET: APIRoute = async ({ site }) => {
-  const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const posts = await postsRecentes();
   const ultima = (posts[0]?.data.pubDate ?? new Date()).toUTCString();
   const itens = posts
     .map((p) => {
