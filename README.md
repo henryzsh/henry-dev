@@ -57,7 +57,8 @@ Se o texto fala do Movimento, acrescente `caso: movimento` no cabeçalho: ele ga
 
 ## Deploy
 
-`npm run deploy` publica em `dev.henrykaua.com.br`. No primeiro deploy o Cloudflare cria o DNS e o
+`npm run deploy` publica em `dev.henrykaua.com.br`. Ele recusa se houver mudança sem commit, para o site no ar
+sempre bater com o git. No primeiro deploy o Cloudflare cria o DNS e o
 certificado desse subdomínio (a zona `henrykaua.com.br` precisa estar na mesma conta).
 No site de vendas, a rota `/dev` já redireciona (301) para cá.
 
