@@ -5,13 +5,13 @@
 //   clientesMedidos  sites de clientes cadastrados no Movimento (Rina e Geh Fit); sitesMedidos soma o do Henry
 //   migrationsSugeriu, statusSugeriu  vêm do repositório do Sugeriu (não está nesta máquina): confirme lá
 //   linhasTjs, bytesTjs  wc -l public/t.js e gzip -9c public/t.js | wc -c (em movimento-sites-clientes)
-//   linhasMovimento      linhas de src/ do Movimento, arredondadas (não reconferido em 01/11/2026)
+//   linhasMovimento      find src -type f | xargs wc -l  (em movimento-sites-clientes; conferido em 02/11/2026: 812)
 const clientesMedidos = 2;
 export const numeros = {
   clientesMedidos,
   linhasTjs: 122,
   bytesTjs: "1.865",
-  linhasMovimento: 930,
+  linhasMovimento: 812,
   testesMovimento: 134,
   testesSugeriu: 167,
   // 126 da API (Vitest) + 75 do teste de navegador (Playwright).
