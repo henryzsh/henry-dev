@@ -69,7 +69,8 @@ const imagem = new URL("/og-image.png", Astro.site);
         }),
       { rootMargin: "-35% 0px -55% 0px" },
     );
-    porId.forEach((_, id) => {
+    // #inicio e #textos não têm link no menu: observados só para limpar a marca ao passar por eles.
+    ["inicio", ...porId.keys(), "textos"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) io.observe(el);
     });
