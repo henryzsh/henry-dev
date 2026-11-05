@@ -42,7 +42,7 @@ ul { padding: 0; list-style: none; }
 .links a:hover { color: var(--muted); }
 .ibtn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; min-width: 44px; padding: 0 14px 0 12px; border-radius: 9999px; border: 0; cursor: pointer; font: 400 14px/1 var(--sans); text-decoration: none; flex: none; color: var(--ink); background: var(--card); box-shadow: inset 0 0 0 1px var(--hair2); transition: background .15s; }
 .ibtn:hover { background: var(--hover); }
-@media (max-width: 960px) { .ibtn { padding: 0; width: 44px; } .ibtn span { display: none; } }
+@media (max-width: 960px) { .ibtn { padding: 0; width: 44px; } }
 @media (max-width: 520px) { .brand .logo.full { display: none; } .brand .logo.sm { display: block; width: 30px; height: 30px; } .nav-in { gap: 8px; } }
 
 /* botões */
@@ -76,8 +76,6 @@ footer { margin-top: auto; box-shadow: 0 -1px 0 var(--hair); }
 @media (max-width: 720px) { .foot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .foot .f1 { grid-column: 1 / -1; } }
 @media (max-width: 420px) { .foot { grid-template-columns: minmax(0, 1fr); } }
 .copy { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 24px; padding-block: 14px calc(14px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -1px 0 var(--hair); font-size: 13px; color: var(--body); }
-.copy a { font-size: 14px; display: inline-flex; align-items: center; min-height: 36px; color: var(--body); text-underline-offset: 3px; }
-.copy a:hover { color: var(--ink); }
 
 .links a[aria-current="true"] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 8px; }
 
