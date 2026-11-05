@@ -8,7 +8,7 @@ export const postsRecentes = async () => (await getCollection("blog")).sort((a, 
 export const dia = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 // Data da última mudança de conteúdo nas páginas fixas. Atualize quando mexer em alguma delas (vai pro sitemap).
-export const ATUALIZADO = "2026-11-02";
+export const ATUALIZADO = "2026-11-05";
 
 // Tempo de leitura do texto do blog: palavras do .md divididas por 200 por minuto, no mínimo 1.
 export const leitura = (texto = "") => `${Math.max(1, Math.round(texto.split(/\s+/).filter(Boolean).length / 200))} min de leitura`;
@@ -18,7 +18,7 @@ export const pessoa = (site: string) => ({
   "@type": "Person",
   "@id": `${site}/#henry`,
   name: "Henry Kauã",
-  jobTitle: "Desenvolvedor",
+  jobTitle: "Assistente de TI",
   url: `${site}/`,
   address: { "@type": "PostalAddress", addressLocality: "Fortaleza", addressRegion: "CE", addressCountry: "BR" },
   worksFor: { "@type": "Organization", name: "Avanço Contabilidade", url: avanco },
