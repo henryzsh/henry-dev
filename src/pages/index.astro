@@ -11,12 +11,12 @@ const site = Astro.site!.origin;
 const dados = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "WebSite", "@id": `${site}/#site`, name: "Henry Kauã", url: `${site}/`, inLanguage: "pt-BR", publisher: { "@id": `${site}/#henry` } },
+    { "@type": "WebSite", "@id": `${site}/#site`, name: "Henry Kauã Dev", url: `${site}/`, inLanguage: "pt-BR", publisher: { "@id": `${site}/#henry` } },
     pessoa(site),
   ],
 };
 ---
-<Base titulo="Henry Kauã · Desenvolvedor" descricao="Desenvolvedor em Fortaleza. Textos sobre automação e backend, e projetos como o Movimento, analytics sem cookie e sem custo mensal." atual="home" dados={dados}>
+<Base titulo="Automação e backend em Fortaleza · Henry Kauã Dev" descricao="Desenvolvedor em Fortaleza. Textos sobre automação e backend, e projetos como o Movimento, analytics sem cookie e sem custo mensal." atual="home" dados={dados}>
 <main id="conteudo" class="dv gut w">
 <div class="intro" id="inicio">
   <p class="k">Fortaleza, CE · Desenvolvedor</p>
